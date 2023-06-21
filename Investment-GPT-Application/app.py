@@ -1,8 +1,8 @@
 # Importing libraries
-from apikey import HUGGINGFACEHUB_API_TOKEN
+from apikey import OPENAI_API_TOKEN
 
-from langchain.llms import HuggingFaceHub
-from langchain.embeddings import HuggingFaceHubEmbeddings
+from langchain.llms import OpenAI
+from langchain.embeddings import OpenAIEmbeddings
 
 from langchain.document_loaders import PyPDFLoader
 from langchain.vectorstores import Chroma
@@ -15,18 +15,12 @@ from langchain.agents.agent_toolkits import (
 import streamlit as st
 
 # Streamlit framework
-st.title("🦜🔗 Investment GPT Banker")
+st.title("🦜🔗 Investment GPT Application")
 input_text = st.text_input("Input your prompt here")
 
 # The language model we're going to use to control the agent
-llm = HuggingFaceHub(
-    huggingfacehub_api_token = HUGGINGFACEHUB_API_TOKEN,
-    repo_id = "bigscience/bloom-560m", 
-    model_kwargs = {"temperature": 0.9, "max_length": 250}
-)
-embeddings = HuggingFaceHubEmbeddings(
-    huggingfacehub_api_token = HUGGINGFACEHUB_API_TOKEN
-)
+llm = OpenAI(openai_api_key=OPENAI_API_TOKEN, temperature=0.1)
+embeddings = OpenAIEmbeddings()
 
 # Create and load PDF loader
 loader = PyPDFLoader("data/annualreport.pdf")  

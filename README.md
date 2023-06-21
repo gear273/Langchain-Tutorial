@@ -7,7 +7,8 @@
 
     ```
     Langchain-Tutorial/
-    ├── Investment-GPT-Banker/
+    ├── Investment-GPT-Application/
+    ├── Task-GPT-Application/
     ├── Youtube-GPT-Application/
     ├── .gitignore
     ├── README.md

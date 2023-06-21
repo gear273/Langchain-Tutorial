@@ -1,7 +1,7 @@
 # Importing libraries
-from apikey import HUGGINGFACEHUB_API_TOKEN
+from apikey import OPENAI_API_TOKEN
 
-from langchain import HuggingFaceHub
+from langchain import OpenAI
 from langchain import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.memory import ConversationBufferMemory
@@ -14,11 +14,7 @@ st.title("🦜🔗 YouTube GPT Application")
 input_text = st.text_input("Enter your prompt here")
 
 # The language model we're going to use to control the agent
-llm = HuggingFaceHub(
-    huggingfacehub_api_token = HUGGINGFACEHUB_API_TOKEN,
-    repo_id = "bigscience/bloom-560m", 
-    model_kwargs = {"temperature": 0.9, "max_length": 250}
-)
+llm = OpenAI(openai_api_key=OPENAI_API_TOKEN, temperature=0.9)
 
 # Memory
 title_memory = ConversationBufferMemory( 
